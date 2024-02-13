@@ -30,6 +30,12 @@ class UserEditLayout extends Rows
                 ->required()
                 ->title(__('Email'))
                 ->placeholder(__('Email')),
+
+//            Input::make('user.email')
+//                ->type('number')
+//                ->required()
+//                ->title(__('Telegram chat id'))
+//                ->placeholder(__('Telegram chat id')),
         ];
     }
 }
