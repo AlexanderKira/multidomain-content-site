@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('websites', function (Blueprint $table) {
             $table->id();
-            $table->string('domain');
+            $table->string('domain')->unique();
             $table->string('logo');
             $table->timestamps();
         });

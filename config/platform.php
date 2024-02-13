@@ -126,8 +126,10 @@ return [
      */
 
     'resource' => [
-        'stylesheets' => [],
-        'scripts'     => [],
+        'stylesheets' => [
+        ],
+        'scripts'     => [
+        ],
     ],
 
     /*

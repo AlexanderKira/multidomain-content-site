@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('slug')->unique();
             $table->string('title');
-            $table->string('author');
+            $table->string('author');;
             $table->text('text');
             $table->boolean('is_publish')->default(false);
             $table->foreignId('rubric_id')->constrained('rubrics')->cascadeOnDelete();
