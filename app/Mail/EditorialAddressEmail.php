@@ -13,14 +13,16 @@ class EditorialAddressEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $emailData;
+    public $subject;
+    public $body;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($emailData)
+    public function __construct(string $subject, string $body)
     {
-        $this->emailData = $emailData;
+        $this->subject = $subject;
+        $this->body = $body;
     }
 
     /**
@@ -28,6 +30,12 @@ class EditorialAddressEmail extends Mailable
      */
     public function envelope(): Envelope
     {
+        if(isset($this->subject)){
+            return new Envelope(
+                subject: $this->subject,
+            );
+        }
+
         return new Envelope(
             subject: 'Editorial Address Email',
         );
@@ -39,7 +47,7 @@ class EditorialAddressEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.editorialAddressEmail.message',
+            view: 'mail.message',
         );
     }
 

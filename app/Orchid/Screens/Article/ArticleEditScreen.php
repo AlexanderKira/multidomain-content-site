@@ -3,9 +3,10 @@
 namespace App\Orchid\Screens\Article;
 
 use App\Http\Requests\ArticleRequest;
-use App\Http\Service\EmailService;
 use App\Models\Article;
 use App\Orchid\Layouts\Article\ArticleEditLayout;
+use App\Service\ArticleService;
+use App\Service\Singletons\EmailService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
 use Orchid\Screen\Actions\Button;
@@ -15,11 +16,11 @@ use Orchid\Support\Facades\Toast;
 class ArticleEditScreen extends Screen
 {
     public ?Article $article = null;
-    protected EmailService $emailService;
+    protected ArticleService $articleService;
 
-    public function __construct(EmailService $emailService)
+    public function __construct(ArticleService $articleService)
     {
-        $this->emailService = $emailService;
+        $this->articleService = $articleService;
     }
 
     /**
@@ -85,7 +86,7 @@ class ArticleEditScreen extends Screen
 
         if(boolval($data['is_publish']) === true){
             try {
-                $this->emailService->notificationToTheEditor($data);
+                $this->articleService->notificationToTheEditor($data);
             } catch (\Exception $e) {
                 Log::error($e->getMessage());
                 Toast::error('Failed to send a confirmation email');
