@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Article;
 
 use App\Http\Controllers\Controller;
-use App\Service\WebsiteService;
+use App\Service\Website\WebsiteService;
 
 class ArticleController extends Controller
 {
@@ -15,7 +15,7 @@ class ArticleController extends Controller
         $this->websiteService = $websiteService;
     }
 
-    public function index ($slug)
+    public function index($slug)
     {
         $website = $this->websiteService->rememberWebsite();
 
@@ -31,7 +31,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function show ($rubric_slug, $article_slug)
+    public function show($rubric_slug, $article_slug)
     {
 
         $website = $this->websiteService->rememberWebsite();

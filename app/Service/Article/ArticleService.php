@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\Article;
 
 use App\Enums\SubjectHeadersEmail;
 use App\Service\Singletons\EmailService;
